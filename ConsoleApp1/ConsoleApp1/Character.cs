@@ -18,6 +18,7 @@ namespace ConsoleApp1
         public int maxhp;
         public int gold;
         public List<item> inventory;
+        public List<Potion> potionsInverntory;
         public int exp;
         public Character(string name)
         {
@@ -30,6 +31,7 @@ namespace ConsoleApp1
             maxhp = 100;
             gold = 1500;
             inventory = new List<item>();
+            potionsInverntory = new List<Potion>();
             exp = 0;
         }
         public void ClearStage()
