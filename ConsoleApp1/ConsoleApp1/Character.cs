@@ -15,6 +15,7 @@ namespace ConsoleApp1
         public float atk;
         public int def;
         public int hp;
+        public int maxhp;
         public int gold;
         public List<item> inventory;
         public int exp;
@@ -26,6 +27,7 @@ namespace ConsoleApp1
             atk = 10;
             def = 5;
             hp = 100;
+            maxhp = 100;
             gold = 1500;
             inventory = new List<item>();
             exp = 0;
