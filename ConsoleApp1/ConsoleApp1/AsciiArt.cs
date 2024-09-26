@@ -2,7 +2,7 @@ namespace AsciiArt
 {
     public class AdciiArt
     {
-        public static void AsciiC()
+        public static void AsciiArtCharacter()
         {
             Console.WriteLine("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
             Console.WriteLine("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠁⣾⡗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
@@ -27,7 +27,7 @@ namespace AsciiArt
             Console.WriteLine();
         }
 
-        public static void AsciiS()
+        public static void AsciiArtShop()
         {
             Console.WriteLine("⠁⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
             Console.WriteLine("⠀⠀⠀⠀⠀⠀⣰⣇⠑⠈⠂⠀⠐⠀⠀⠀⠴⢣⣀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⠀⠀");
@@ -41,7 +41,7 @@ namespace AsciiArt
             Console.WriteLine();
         }
 
-        public static void AsciiO()
+        public static void AsciiArtOldMan()
         {
             Console.WriteLine("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
             Console.WriteLine("⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠿⠆⣮⣦⣿⣶⡶⠿⢗⣀⡀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀");
@@ -64,7 +64,7 @@ namespace AsciiArt
             Console.WriteLine();
         }
 
-        public static void AsciiD()
+        public static void AsciiArtDungeon()
         {
             Console.WriteLine("⠀⢀⣷⡯⣿⡇⣀⣘⣿⣿⣿⣇⠿⢿⣿⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣇⢠⣟⡔⣿⢟⢀⠀");
             Console.WriteLine("⠀⢬⡝⢾⣿⣧⣙⢹⣛⣛⣻⣿⣿⣿⣿⣯⣿⣿⣿⣽⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣓⣛⣻⡿⣯⡿⣯⣠⠄");
