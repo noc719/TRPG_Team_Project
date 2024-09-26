@@ -48,14 +48,15 @@ namespace ConsoleApp1
                 Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n원하시는 이름을 결정해주세요.");
                 string? name = Console.ReadLine();
                 Console.Write($"입력하신 이름은 {name}입니다.\n\n1.저장\n2.취소\n\n원하시는 행동을 입력해주세요.\n>>");
+                Character me=null;
                 while (true)
                 {
                     choice = Console.ReadLine();
                     if (choice == "1")
                     {
                         a = 1;
-                        Character me = new Character(name);
-                        GameStart(me);
+                        me = new Character(name);
+                        
                         break;
                     }
                     else if (choice == "2")
@@ -67,6 +68,31 @@ namespace ConsoleApp1
                         Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
                     }
                 }
+                Console.Write($"직업을 선택해주세요.\n\n1. 전사\n2. 도적\n\n원하시는 행동을 입력해주세요.\n>>");
+                while (true)
+                {
+                    choice = Console.ReadLine();
+                    if (choice == "1")
+                    {
+                        a = 1;
+                        me.job = "전사";
+                        me.atk = 10;
+                        me.def = 5;
+                        break;
+                    }
+                    else if (choice == "2")
+                    {
+                        me.job = "도적";
+                        me.atk = 12;
+                        me.def = 3;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                    }
+                }
+                GameStart(me);
             }
         }
         public static void GameStart(Character me)//메인 화면
