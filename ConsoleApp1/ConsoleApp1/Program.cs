@@ -11,11 +11,13 @@ namespace ConsoleApp1
     internal class Program
     {
         public static ItemList? itemlist;
+        public static PotionList? potionlist;
         static void Main(string[] args)
         {
             int a=0;
             string? choice;
             itemlist = new ItemList();
+            potionlist = new PotionList();
             if (File.Exists(".\\data.dat"))//저장된 데이터 있는지 확인해서 불러오거나 새로 시작
             {
                 Console.Write($"저장된 데이터가 있습니다.\n불러오시겠습니까?\n\n1.불러오기\n2.새로 시작\n\n원하시는 행동을 입력해주세요.\n>>");
@@ -25,7 +27,7 @@ namespace ConsoleApp1
                     if (choice == "1")
                     {
                         Character me = new Character("");
-                        SaveAndLoad.LoadData(me, itemlist);
+                        SaveAndLoad.LoadData(me, itemlist,potionlist);
                         GameStart(me);
                         a = 1;
                         break;
@@ -100,7 +102,7 @@ namespace ConsoleApp1
             int a = 0;
             Console.Clear();
             Console.Write("스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n\n" +
-                "1. 상태보기\n2. 인벤토리\n3. 상점\n4. 던전입장\n5. 휴식\n6. 저장\n0. 게임종료\n\n원하시는 행동을 입력해주세요.\n>>");
+                "1. 상태보기\n2. 인벤토리\n3. 상점\n4. 전투시작\n5. 휴식\n6. 저장\n0. 게임종료\n\n원하시는 행동을 입력해주세요.\n>>");
             while (a==0)
             {
                 string? choice = Console.ReadLine();
@@ -121,7 +123,7 @@ namespace ConsoleApp1
                 }
                 else if (choice == "4")
                 {
-                    Dungeon.EnterDungeon(me);
+                    Battle.EnterBattle(me,null);
                     a = 1;
                 }
                 else if (choice == "5")
@@ -131,7 +133,7 @@ namespace ConsoleApp1
                 }
                 else if (choice == "6")
                 {
-                    SaveAndLoad.SaveData(me,itemlist);
+                    SaveAndLoad.SaveData(me,itemlist,potionlist);
                     Console.Write("\n저장되었습니다.\n>> ");
                 }
                 else if (choice == "0")

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
+    [Serializable]
     public class PotionList
     {
         private List<Potion> potions = new List<Potion>();

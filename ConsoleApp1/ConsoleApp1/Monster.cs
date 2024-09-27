@@ -26,23 +26,7 @@ namespace ConsoleApp1
             this.hp = hp;
             this.def = def;
             this.atk = atk;
-            Console.WriteLine($"Lv.{level} {name}  HP {hp}");
-
-
         }
-
-        public void MonsterAttack()
-        {
-            Console.WriteLine($"Lv.{level} {name} 의 공격!");
-
-            //(플레이어 이름)을 맞췄습니다. [플레이어의 방어력에 비례한 피해!]
-
-
-        }
-
-
-
-
     }
 
     public class Minion : Monster

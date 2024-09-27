@@ -16,9 +16,12 @@ namespace ConsoleApp1
         public float atk;
         public int def;
         public int hp;
+        public int maxhp;
         public int gold;
         public List<item> inventory;
         public int exp;
         public ItemList itemList;
+        public List<Potion> potionsInverntory;
+        public PotionList potionlist;
     }
 }

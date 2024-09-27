@@ -9,7 +9,7 @@ namespace ConsoleApp1
 {
     internal class SaveAndLoad
     {
-        public static void SaveData(Character me, ItemList itemList)//저장
+        public static void SaveData(Character me, ItemList itemList, PotionList potionList)//저장
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(".\\data.dat", FileMode.Create);
@@ -26,13 +26,15 @@ namespace ConsoleApp1
             filesaver.inventory = me.inventory;
             filesaver.exp = me.exp;
             filesaver.itemList = Program.itemlist;
-
+            filesaver.maxhp = me.maxhp;
+            filesaver.potionsInverntory = me.potionsInverntory;
+            filesaver.potionlist = Program.potionlist;
             bf.Serialize(fs, filesaver);
 
             fs.Close();
         }
 
-        public static void LoadData(Character me, ItemList itemList)//불러오기
+        public static void LoadData(Character me, ItemList itemList, PotionList potionList)//불러오기
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(".\\data.dat", FileMode.Open);
@@ -49,6 +51,9 @@ namespace ConsoleApp1
             me.exp = filesaver.exp;
             Program.itemlist = filesaver.itemList;
             me.inventory = filesaver.inventory;
+            me.maxhp = filesaver.maxhp;
+            me.potionsInverntory= filesaver.potionsInverntory;
+            Program.potionlist = filesaver.potionlist;
             fs.Close();
         }
     }

@@ -1,5 +1,6 @@
 namespace ConsoleApp1
 {
+    [Serializable]
     public class Potion
     {
         public string potionName { get; }
