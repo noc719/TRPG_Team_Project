@@ -38,9 +38,9 @@ namespace ConsoleApp1
         }
 
         //shop & dungeon
-        public void AddPotionToInventory(Potion potion, Character me)
+        public static void AddPotionToInventory(Potion potion, Character me)
         {
-            var existingPotion = potions.Find(p => p.potionName == potion.potionName);
+            var existingPotion = me.potionsInverntory.Find(p => p.potionName == potion.potionName);
             if (existingPotion == null)
             {
                 me.potionsInverntory.Add(potion);
