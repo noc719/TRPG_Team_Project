@@ -9,11 +9,11 @@ namespace ConsoleApp1
     public class Monster
     {
 
-        public int level;
-        public string name;
-        public int hp;
-        public int def;
-        public int atk;
+        public int level { get; set; }
+        public string name { get; set; }
+        public int hp { get; set; }
+        public int def { get; set; }
+        public int atk { get; set; }
 
 
         //몬스터 정보
@@ -27,6 +27,33 @@ namespace ConsoleApp1
             this.def = def;
             this.atk = atk;
         }
+
+        public void Reward(Character me)
+        {
+            Random random = new Random();      
+            PotionList potionList = new PotionList();
+
+            int rewardGold = level * random.Next(50, 151);  //50~150 사이의 값에 몬스터의 레벨만큼 
+            int potionDrop = random.Next(1, 101);  //포션휙득 확률 백분율
+            int itemDrop = random.Next(1, 101); //장비 휙득 확률 백분율
+            
+            Console.WriteLine("[휙득 아이템]");
+            Console.WriteLine("{0}", rewardGold);
+            if (potionDrop <= 20)
+            {
+                Console.WriteLine("포션 - {}"); // 랜덤한 갯수의 포션
+            }
+            if(itemDrop == 1) 
+            {
+                Console.WriteLine("장비 이름 - 1");  //휙득하지 못한 장비 
+            }
+            
+            me.gold += rewardGold;
+
+
+        }
+
+
     }
 
     public class Minion : Monster
