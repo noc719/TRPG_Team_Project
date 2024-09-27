@@ -23,5 +23,7 @@ namespace ConsoleApp1
         public ItemList itemList;
         public List<Potion> potionsInverntory;
         public PotionList potionlist;
+        public int mp;
+        public int maxmp;
     }
 }

@@ -29,6 +29,8 @@ namespace ConsoleApp1
             filesaver.maxhp = me.maxhp;
             filesaver.potionsInverntory = me.potionsInverntory;
             filesaver.potionlist = Program.potionlist;
+            filesaver.mp = me.mp;
+            filesaver.maxmp = me.mp;
             bf.Serialize(fs, filesaver);
 
             fs.Close();
@@ -54,6 +56,8 @@ namespace ConsoleApp1
             me.maxhp = filesaver.maxhp;
             me.potionsInverntory= filesaver.potionsInverntory;
             Program.potionlist = filesaver.potionlist;
+            me.mp = filesaver.mp;
+            me.maxmp = filesaver.maxmp;
             fs.Close();
         }
     }

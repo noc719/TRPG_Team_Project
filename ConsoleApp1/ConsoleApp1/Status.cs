@@ -13,7 +13,7 @@ namespace ConsoleApp1
             int a = 0;
             Console.Clear();
             Console.Write($"상태보기\n캐릭터의 정보가 표시됩니다.\n\nLv. {me.level}\n" +
-                $"{me.name} ( {me.job} )\n공격력 : {me.atk}\n방어력 : {me.def}\n체력 : {me.hp}\nGold : {me.gold}\n\n" +
+                $"{me.name} ( {me.job} )\n공격력 : {me.atk}\n방어력 : {me.def}\n체력 : {me.hp}\n마나 : {me.mp}\nGold : {me.gold}\n\n" +
                 "0. 나가기\n\n원하시는 행동을 입력해주세요.\n>>");
             while (a == 0)
             {
