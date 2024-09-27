@@ -20,6 +20,8 @@ namespace ConsoleApp1
         public List<item> inventory;
         public List<Potion> potionsInverntory;
         public int exp;
+        public int mp;
+        public int maxmp;
         public Character(string name)
         {
             this.name = name;
@@ -33,6 +35,8 @@ namespace ConsoleApp1
             inventory = new List<item>();
             potionsInverntory = new List<Potion>();
             exp = 0;
+            maxmp = 50;
+            mp = 50;
         }
         public void ClearStage()
         {

@@ -9,6 +9,7 @@ namespace ConsoleApp1
     internal class Battle
     {
         public static int starthp;
+
         public static void EnterBattle(Character me, List<Monster> monsters)
         {
             Console.Clear();
@@ -57,7 +58,7 @@ namespace ConsoleApp1
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\n\n1. 공격\n\n원하시는 행동을 입력해주세요.\n>>");
+            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n1. 공격\n\n원하시는 행동을 입력해주세요.\n>>");
             while (true)
             {
                 choice = Console.ReadLine();
@@ -93,7 +94,7 @@ namespace ConsoleApp1
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\n\n0. 취소\n\n대상을 선택해주세요.\n>>");
+            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n0. 취소\n\n대상을 선택해주세요.\n>>");
             while (true)
             {
                 choice = Console.ReadLine();
