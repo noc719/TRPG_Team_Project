@@ -495,7 +495,7 @@ namespace ConsoleApp1
             {
                 targetMonster1 = temp[random.Next(0, temp.Count)];
                 temp.Remove(targetMonster1);
-                targetMonster1 = temp[random.Next(0, temp.Count)];
+                targetMonster2 = temp[random.Next(0, temp.Count)];
                 effectedCount = 2;
             }
             else
