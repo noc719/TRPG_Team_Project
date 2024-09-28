@@ -31,6 +31,9 @@ namespace ConsoleApp1
             filesaver.potionlist = Program.potionlist;
             filesaver.mp = me.mp;
             filesaver.maxmp = me.mp;
+            filesaver.questMinionKill = me.questMinionKill;
+            filesaver.questMaxionKill = me.questMaxionKill;
+            filesaver.questVoidBugKill = me.questVoidBugKill;
             bf.Serialize(fs, filesaver);
 
             fs.Close();
@@ -58,6 +61,9 @@ namespace ConsoleApp1
             Program.potionlist = filesaver.potionlist;
             me.mp = filesaver.mp;
             me.maxmp = filesaver.maxmp;
+            me.questMinionKill = filesaver.questMinionKill;
+            me.questMaxionKill = filesaver.questMaxionKill;
+            me.questVoidBugKill = filesaver.questVoidBugKill;
             fs.Close();
         }
     }

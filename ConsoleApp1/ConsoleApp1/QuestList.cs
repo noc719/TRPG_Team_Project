@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class QuestList
+    [Serializable]
+    public class QuestList
     {
-        // 퀘스트 목록
-        public static List<Quest> questList = new List<Quest>();
-        
+        public static List<Quest> questList = new List<Quest>();   // Quest에서 받아온 quest를 questList에 받아와서 재생성
+
         // 퀘스트를 추가하는 메서드
         public static void QuestAdd()
         {
@@ -32,6 +32,11 @@ namespace ConsoleApp1
                     questList.Add(new Quest(title, qusetcheck, progress, required, isaccepted, rewards)); // 퀘스트 추가
                 }
             }
+        }
+
+        public List<Quest> GetQuest()
+        {
+            return questList; // questList 반환
         }
     }
 }

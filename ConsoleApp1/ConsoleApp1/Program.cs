@@ -12,6 +12,7 @@ namespace ConsoleApp1
     {
         public static ItemList? itemlist;
         public static PotionList? potionlist;
+        public static QuestList? questlist;
         static void Main(string[] args)
         {
             int a=0;
@@ -133,7 +134,7 @@ namespace ConsoleApp1
                 }
                 else if (choice == "6")
                 {
-                    Quest.QuestScene(me);
+                    QuestSetup.QuestScene(me);
                     a = 1;
                 }
                 else if (choice == "7")
