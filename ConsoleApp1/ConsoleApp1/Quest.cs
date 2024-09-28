@@ -32,15 +32,13 @@ namespace ConsoleApp1
             rewardP = rewardp;
         }
 
-        // 퀘스트 목록
-        public static List<Quest> questList = new List<Quest>();
-
+        static List<Quest> questList = QuestList.questList;
         // 퀘스트 씬 출력
         public static void QuestScene(Character me) // 퀘스트 씬
         {
             Console.Clear(); // 화면 초기화
             Console.WriteLine("Quest!!\n"); // 퀘스트 씬 제목 출력
-            QuestAdd(); // 퀘스트 추가
+            QuestList.QuestAdd(); // 퀘스트 추가
 
             // 선택 옵션 출력
             Console.WriteLine("1. 수락한 퀘스트");
@@ -150,29 +148,7 @@ namespace ConsoleApp1
         {
             QuestListOutput(i, true); // isAccepted 인자를 true로 설정하여 호출
         }
-
-        // 퀘스트를 추가하는 메서드
-        public static void QuestAdd()
-        {
-            // 퀘스트 데이터 목록
-            var questData = new List<(string title, bool qusetcheck, int porgress, int required, bool isacceped, int reward)>
-            {
-                ($"마을을 위협하는 미니언 처치", false, 0, 5, false, 100),
-                ($"마을을 위협하는 공허충 처치 이브", false, 0, 5, false, 200),
-                ($"마을을 위협하는 대포 미니언 처치", false , 0 , 5 , false, 300),
-                ($"장비 장착하기", false , 0 , 5 , false, 50),
-                ($"상점 구매하기", false, 0, 5, false, 50)
-            };
-
-            // 퀘스트 목록에 추가
-            foreach (var (title, qusetcheck, progress, required, isaccepted, rewards) in questData)
-            {
-                if (!questList.Any(q => q.questTitle == title)) // 중복 체크
-                {
-                    questList.Add(new Quest(title, qusetcheck, progress, required, isaccepted, rewards)); // 퀘스트 추가
-                }
-            }
-        }
+        
         // 선택한 퀘스트 씬을 출력하는 메서드
         public static void QuestChoiceScene(Character me,int choiceNumber)
         {

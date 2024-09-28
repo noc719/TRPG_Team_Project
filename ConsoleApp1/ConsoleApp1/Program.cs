@@ -102,7 +102,7 @@ namespace ConsoleApp1
             int a = 0;
             Console.Clear();
             Console.Write("스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n\n" +
-                "1. 상태보기\n2. 인벤토리\n3. 상점\n4. 전투시작\n5. 휴식\n6. 저장\n0. 게임종료\n\n원하시는 행동을 입력해주세요.\n>>");
+                "1. 상태보기\n2. 인벤토리\n3. 상점\n4. 전투시작\n5. 휴식\n6. 퀘스트\n7. 저장\n0. 게임종료\n\n원하시는 행동을 입력해주세요.\n>>");
             while (a==0)
             {
                 string? choice = Console.ReadLine();
@@ -132,6 +132,11 @@ namespace ConsoleApp1
                     a = 1;
                 }
                 else if (choice == "6")
+                {
+                    Quest.QuestScene(me);
+                    a = 1;
+                }
+                else if (choice == "7")
                 {
                     SaveAndLoad.SaveData(me,itemlist,potionlist);
                     Console.Write("\n저장되었습니다.\n>> ");
