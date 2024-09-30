@@ -141,13 +141,13 @@ namespace ConsoleApp1
             var quest = questList[choiceNumber - 1]; // 배열은 0부터 시작하므로 -1
             foreach (var questcheck in questList)
             {
-                if (questcheck.questTitle.Contains("미니언"))
-                {
-                    questcheck.progressCount = me.questMinionKill;
-                }
-                else if (questcheck.questTitle.Contains("대포미니언"))
+                if (questcheck.questTitle.Contains("대포"))
                 {
                     questcheck.progressCount = me.questMaxionKill;
+                }
+                else if (questcheck.questTitle.Contains("미니언"))
+                {
+                    questcheck.progressCount = me.questMinionKill;
                 }
                 else if (questcheck.questTitle.Contains("공허충"))
                 {
