@@ -16,14 +16,6 @@ namespace ConsoleApp1
             potions.Add(new Potion("중형 MP 포션", 50, "MP를 50 회복합니다.", 70, 5));
         }
 
-        public void Display()
-        {
-            foreach (var potion in potions)
-            {
-                Console.WriteLine($"- {potion.potionName} | 회복량: +{potion.healAmount} | {potion.potionDescribe} | {potion.price} G | X{potion.quantity}");
-            }
-        }
-
         public void AddPotion(Potion newPotion)
         {
             var existingPotion = potions.Find(p => p.potionName == newPotion.potionName);
