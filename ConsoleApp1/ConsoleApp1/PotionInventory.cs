@@ -14,7 +14,7 @@ namespace ConsoleApp1
             }
             else
             {
-               existingPotion.quantity += potion.quantity;
+               existingPotion.potionQuantity += potion.potionQuantity;
             }
         }
     }

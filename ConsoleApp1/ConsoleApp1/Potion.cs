@@ -3,19 +3,19 @@ namespace ConsoleApp1
     [Serializable]
     public class Potion
     {
+        public string potionType { get; } //hp, mp
         public string potionName { get; }
-        public int healAmount { get; }
+        public int potionHealAmount { get; }
         public string potionDescribe { get; set; }
-        public int price { get; set; }
-        public int quantity { get; set; }
+        public int potionQuantity { get; set; }
 
-        public Potion(string name, int healAmount, string describe, int price, int quantity)
+        public Potion(string type, string name, int healAmount, string describe, int quantity)
         {
+            potionType = type;
             potionName = name;
-            healAmount = healAmount;
+            potionHealAmount = healAmount;
             potionDescribe = describe;
-            price = price;
-            quantity = quantity;
+            potionQuantity = quantity;
         }
     }
 }

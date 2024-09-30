@@ -10,23 +10,15 @@ namespace ConsoleApp1
 
         public PotionList()
         {
-            potions.Add(new Potion("HP 포션", 30, "HP를 30 회복합니다.", 50, 5));
-            potions.Add(new Potion("중형 HP 포션", 50, "HP를 50 회복합니다.", 70, 5));
-            potions.Add(new Potion("MP 포션", 30, "MP를 30 회복합니다.", 50, 5));
-            potions.Add(new Potion("중형 MP 포션", 50, "MP를 50 회복합니다.", 70, 5));
+            potions.Add(new Potion("HP", "HP 포션", 30, "HP를 30 회복합니다.", 1));
+            potions.Add(new Potion("HP", "중형 HP 포션", 50, "HP를 50 회복합니다.", 1));
+            potions.Add(new Potion("MP", "MP 포션", 30, "MP를 30 회복합니다.", 1));
+            potions.Add(new Potion("MP", "중형 MP 포션", 50, "MP를 50 회복합니다.", 1));
         }
 
-        public void AddPotion(Potion newPotion)
+        public Potion GetPotionByType(string potionType)
         {
-            var existingPotion = potions.Find(p => p.potionName == newPotion.potionName);
-            if (existingPotion != null)
-            {
-                existingPotion.quantity += newPotion.quantity;
-            }
-            else
-            {
-                potions.Add(newPotion);
-            }
+            return potions.FirstOrDefault(p => p.potionType == potionType);
         }
 
         public List<Potion> GetPotions()

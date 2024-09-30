@@ -29,7 +29,7 @@ namespace ConsoleApp1
             Console.WriteLine("[포션 목록]\n");
             foreach (Potion potion in me.potionsInverntory)
             {
-                Console.WriteLine($"- {potion.potionName} X{potion.quantity}");
+                Console.WriteLine($"- {potion.potionName} X{potion.potionQuantity}");
             }
             Console.WriteLine();
 
@@ -149,6 +149,7 @@ namespace ConsoleApp1
 
         public static void UsePotion(Character me)
         {
+            Console.Clear();
             int count = 1; //if player have a potion, player needs a number to choose one.
             
             if(me.potionsInverntory.Count == 0)
@@ -165,6 +166,7 @@ namespace ConsoleApp1
                 else
                 {
                     Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                    return;
                 }
             }
             else
@@ -172,7 +174,7 @@ namespace ConsoleApp1
                 Console.WriteLine("[포션 목록]\n");
                 foreach (Potion potion in me.potionsInverntory) //potion list
                 {
-                Console.WriteLine($"{count}. {potion.potionName} | 회복량: +{potion.healAmount} | {potion.potionDescribe} | X{potion.quantity}");
+                Console.WriteLine($"{count}. {potion.potionName} | 회복량: +{potion.potionHealAmount} | {potion.potionDescribe} | X{potion.potionQuantity}");
                 count++;
                 }
                 Console.WriteLine();
@@ -186,33 +188,138 @@ namespace ConsoleApp1
                     {
                         Potion potion = me.potionsInverntory[n-1];
 
-                        if (0 < potion.quantity)
+                        if (0 < potion.potionQuantity)
                         {
-                            if (me.hp < me.maxhp)
+                            if(potion.potionType == "HP") //hp
                             {
-                                potion.quantity--;
-                                me.hp += potion.healAmount;
-
-                                if(me.hp > me.maxhp) //hp can't increase than maxhp.
+                                if (me.hp < me.maxhp)
                                 {
-                                    me.hp = me.maxhp;
-                                    Console.WriteLine("체력이 완전히 회복되었습니다.");
-                                    EnterInventory(me);
-                                }
+                                    potion.potionQuantity--;
+                                    me.hp += potion.potionHealAmount;
 
-                                Console.WriteLine($"{potion.potionName}을 사용하여 +{potion.healAmount}을 회복했습니다.\n현재 HP: {me.hp}/{me.maxhp}");
-                                EnterInventory(me);
+                                    if(me.hp > me.maxhp) //hp can't increase than maxhp.
+                                    {
+                                        me.hp = me.maxhp;
+                                        Console.WriteLine("체력이 완전히 회복되었습니다.");
+                                        Console.WriteLine("");
+
+                                        Console.WriteLine("0. 나가기\n>>>");
+                                        while(true)
+                                        {
+                                            string? choice = Console.ReadLine();
+                                            if ( choice == "0")
+                                            {
+                                                EnterInventory(me);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                                return;
+                                            }
+                                        }
+                                    }
+
+                                    Console.WriteLine($"{potion.potionName}을 사용하여 +{potion.potionHealAmount}을 회복했습니다.\n현재 HP: {me.hp}/{me.maxhp}");
+                                    Console.WriteLine("");
+
+                                    Console.WriteLine("0. 나가기\n>>>");
+                                    while(true)
+                                    {
+                                        string? choice = Console.ReadLine();
+                                        if ( choice == "0")
+                                        {
+                                            EnterInventory(me);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                            return;
+                                        }
+                                    }
+                                }
+                                else //if(me.hp > me.maxhp)
+                                {
+                                    Console.WriteLine("체력이 최대치에 도달하여 포션을 사용할 수 없습니다.");
+                                    while(true)
+                                    {
+                                        string? choice = Console.ReadLine();
+                                        if ( choice == "0")
+                                        {
+                                            EnterInventory(me);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                            return;
+                                        }
+                                    }
+                                }
                             }
-                            else //if(me.hp > me.maxhp)
+                            else if(potion.potionType == "MP") //mp
                             {
-                                Console.WriteLine("체력이 최대치에 도달하여 포션을 사용할 수 없습니다.");
-                                EnterInventory(me);
+                                if (me.mp < me.maxmp)
+                                {
+                                    potion.potionQuantity--;
+                                    me.mp += potion.potionHealAmount;
+
+                                    if(me.mp > me.maxmp) //mp can't increase than maxmp.
+                                    {
+                                        me.mp = me.maxmp;
+                                        Console.WriteLine("마나가 완전히 회복되었습니다.");
+                                        while(true)
+                                        {
+                                            string? choice = Console.ReadLine();
+                                            if ( choice == "0")
+                                            {
+                                                EnterInventory(me);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                                return;
+                                            }
+                                        }
+                                    }
+
+                                    Console.WriteLine($"{potion.potionName}을 사용하여 +{potion.potionHealAmount}을 회복했습니다.\n현재 MP: {me.mp}/{me.maxmp}");
+                                    while(true)
+                                    {
+                                        string? choice = Console.ReadLine();
+                                        if ( choice == "0")
+                                        {
+                                            EnterInventory(me);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                            return;
+                                        }
+                                    }
+                                }
+                                else //if(me.mp > me.maxmp)
+                                {
+                                    Console.WriteLine("마나가 최대치에 도달하여 포션을 사용할 수 없습니다.");
+                                    while(true)
+                                    {
+                                        string? choice = Console.ReadLine();
+                                        if ( choice == "0")
+                                        {
+                                            EnterInventory(me);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                                            return;
+                                        }
+                                    }
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                        else
+                        {
+                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                            return;
+                        }
                     }
                 }
             }
