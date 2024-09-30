@@ -34,6 +34,8 @@ namespace ConsoleApp1
             filesaver.questMinionKill = me.questMinionKill;
             filesaver.questMaxionKill = me.questMaxionKill;
             filesaver.questVoidBugKill = me.questVoidBugKill;
+            filesaver.questItemEquip = me.questItemEquip;
+            filesaver.questItemBuy = me.questItemBuy;
             filesaver.quests = me.quest;
             filesaver.questlist = Program.questlist;
             bf.Serialize(fs, filesaver);
@@ -66,6 +68,8 @@ namespace ConsoleApp1
             me.questMinionKill = filesaver.questMinionKill;
             me.questMaxionKill = filesaver.questMaxionKill;
             me.questVoidBugKill = filesaver.questVoidBugKill;
+            me.questItemEquip = filesaver.questItemEquip;
+            me.questItemBuy = filesaver.questItemBuy;
             me.quest = filesaver.quests;
             Program.questlist = filesaver.questlist;
             fs.Close();

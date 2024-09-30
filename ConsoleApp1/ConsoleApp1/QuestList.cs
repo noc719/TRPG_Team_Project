@@ -20,8 +20,8 @@ namespace ConsoleApp1
                 ($"마을을 위협하는 미니언 처치", false, 0, 5, false, 100),
                 ($"마을을 위협하는 공허충 처치 이브", false, 0, 5, false, 200),
                 ($"마을을 위협하는 대포 미니언 처치", false , 0 , 5 , false, 300),
-                ($"장비 장착하기", false , 0 , 5 , false, 50),
-                ($"상점 구매하기", false, 0, 5, false, 50)
+                ($"장비 장착하기", false , 0 , 1 , false, 50),
+                ($"상점 구매하기", false, 0, 1, false, 50)
             };
 
             // 퀘스트 목록에 추가

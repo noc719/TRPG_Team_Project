@@ -150,6 +150,14 @@ namespace ConsoleApp1
                 {
                     questcheck.progressCount = me.questVoidBugKill;
                 }
+                else if (questcheck.questTitle.Contains("상점"))
+                {
+                    questcheck.progressCount = me.questItemBuy;
+                }
+                else if (questcheck.questTitle.Contains("장비"))
+                {
+                    questcheck.progressCount = me.questItemEquip;
+                }
             }
             while (true) // 반복문 시작
             {
