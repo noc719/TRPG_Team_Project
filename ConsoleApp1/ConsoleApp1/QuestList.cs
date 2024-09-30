@@ -9,10 +9,10 @@ namespace ConsoleApp1
     [Serializable]
     public class QuestList
     {
-        public static List<Quest> questList = new List<Quest>();
+        public List<Quest> quests = new List<Quest>();
 
         // 퀘스트를 추가하는 메서드
-        public static void QuestAdd(Character me)
+        public void QuestAdd(Character me)
         {
             // 퀘스트 데이터 목록
             var questData = new List<(string title, bool qusetcheck, int porgress, int required, bool isacceped, int reward)>
@@ -27,12 +27,13 @@ namespace ConsoleApp1
             // 퀘스트 목록에 추가
             foreach (var (title, qusetcheck, progress, required, isaccepted, rewards) in questData)
             {
-                if (!questList.Any(q => q.questTitle == title)) // 중복 체크
+                if (!this.quests.Any(q => q.questTitle == title)) // 중복 체크
                 {
-                    questList.Add(new Quest(title, qusetcheck, progress, required, isaccepted, rewards)); // 퀘스트 추가
+                    quests.Add(new Quest(title, qusetcheck, progress, required, isaccepted, rewards)); // 퀘스트 추가
                 }
             }
         }
+
 
     }
 }

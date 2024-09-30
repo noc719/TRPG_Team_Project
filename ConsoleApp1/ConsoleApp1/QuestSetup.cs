@@ -9,7 +9,7 @@ namespace ConsoleApp1
     internal class QuestSetup
     {
         private static bool isQuestAdded = false;
-        private static List<Quest> questList = QuestList.questList;
+        private static List<Quest> questList = Program.questlist.quests;
         // 퀘스트 씬 출력
         public static void QuestScene(Character me) // 퀘스트 씬
         {
@@ -20,7 +20,7 @@ namespace ConsoleApp1
 
             if (!isQuestAdded)//시작할때 퀘스트 리스트 받기
             {
-                QuestList.QuestAdd(me);
+                Program.questlist.QuestAdd(me);
                 isQuestAdded = true;
             }
             // 선택 옵션 출력
@@ -113,7 +113,7 @@ namespace ConsoleApp1
         public static void QuestListOutput(int i, bool isAccepted)
         {
             // 주어진 인덱스 i에 해당하는 퀘스트를 가져온다.
-            Quest quest = questList[i];
+            Quest quest = Program.questlist.quests[i];
             if (quest.isQuestAccepted == isAccepted)
             {
                 // 퀘스트 제목과 클리어 상태(완료 또는 미완료)를 출력한다.
