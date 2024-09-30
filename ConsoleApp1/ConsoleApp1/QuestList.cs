@@ -11,8 +11,7 @@ namespace ConsoleApp1
     {
         public List<Quest> quests = new List<Quest>();
 
-        // 퀘스트를 추가하는 메서드
-        public void QuestAdd(Character me)
+        public QuestList()
         {
             // 퀘스트 데이터 목록
             var questData = new List<(string title, bool qusetcheck, int porgress, int required, bool isacceped, int reward)>
@@ -32,8 +31,7 @@ namespace ConsoleApp1
                     quests.Add(new Quest(title, qusetcheck, progress, required, isaccepted, rewards)); // 퀘스트 추가
                 }
             }
+
         }
-
-
     }
 }

@@ -14,18 +14,20 @@ namespace ConsoleApp1
         public static void QuestScene(Character me) // 퀘스트 씬
         {
             
-            questList = me.quest;
+            //questList = me.quest;
             Console.Clear(); // 화면 초기화
             Console.WriteLine("Quest!!\n"); // 퀘스트 씬 제목 출력
-
+            /*
             if (!isQuestAdded)//시작할때 퀘스트 리스트 받기
             {
                 Program.questlist.QuestAdd(me);
                 isQuestAdded = true;
             }
+            */
+
             // 선택 옵션 출력
-            Console.WriteLine("1. 수락한 퀘스트");
-            Console.WriteLine("2. 수락하지 않은 퀘스트");
+            Console.WriteLine("1. 수락하지 않은 퀘스트");
+            Console.WriteLine("2. 수락한 퀘스트");
             Console.WriteLine("0. 나가기\n");
             Console.Write(">>");
             // 사용자 입력 대기
