@@ -94,7 +94,10 @@ namespace ConsoleApp1
                         if (selected.isEquipped == true)
                         {
                             //itemlist.items[me.inventory[int.Parse(choice) - 1]].isEquipped = false;
-
+                            if (me.questItemEquip < 1)
+                            {
+                                me.questItemEquip++;
+                            }
                             selected.isEquipped = false;
                             if (selected.stat == "방어력")
                             {

@@ -55,6 +55,18 @@ namespace ConsoleApp1
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine($"Lv.{monster.level} {monster.name}  Dead");
+                    // 죽으면 퀘스트
+                    if (monster.name == "미니언" && me.questMinionKill < 5)
+                    {
+                        me.questMinionKill++;
+                    }else if(monster.name == "대포미니언" && me.questMinionKill < 5)
+                    {
+                        me.questMaxionKill++;
+                    }
+                    else if (monster.name == "공허충" && me.questVoidBugKill < 5)
+                    {
+                        me.questVoidBugKill++;
+                    }
                     Console.ResetColor();
                 }
             }

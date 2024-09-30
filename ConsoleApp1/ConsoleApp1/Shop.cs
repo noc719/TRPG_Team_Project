@@ -97,6 +97,10 @@ namespace ConsoleApp1
                         }
                         else if (selected.price <= me.gold)
                         {
+                            if (me.questItemBuy < 1)
+                            {
+                                me.questItemBuy++;
+                            }
                             me.gold -= selected.price;
                             me.inventory.Add(selected);
                             selected.isBought = true;
