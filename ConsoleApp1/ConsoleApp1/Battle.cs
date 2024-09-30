@@ -12,12 +12,11 @@ namespace ConsoleApp1
     internal class Battle
     {
         public static int starthp;
-
         public static int saveGold = 0;
         public static List<Potion> pickupPotion = new List<Potion>();
         public static List<item> pickupItem = new List<item>();
         public static int saveExp = 0;
-
+        private static List<Quest> battlequestlist = Program.questlist.quests;
 
 
         public static void EnterBattle(Character me, List<Monster> monsters)
@@ -264,21 +263,29 @@ namespace ConsoleApp1
                 {
                     remainhp = "Dead";
 
-                    targetMonster.Reward(me); //사망시 보상 로직 작동
+                    ////////////////////////////////////////////////////////////
+                    /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                     /////////////////////////////////////////////////////////////
-                    ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                    /////////////////////////////////////////////////////////////
-                    if (targetMonster.name == "미니언" && me.questMinionKill < 5)
+                    foreach (var quest in battlequestlist)
                     {
-                        me.questMinionKill++;
-                    }
-                    else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5)
-                    {
-                        me.questMaxionKill++;
-                    }
-                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5)
-                    {
-                        me.questVoidBugKill++;
+                        if (targetMonster.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                        {
+                            me.questMinionKill++;
+                            quest.progressCount = me.questMinionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                        {
+                            me.questMaxionKill++;
+                            quest.progressCount = me.questMaxionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        {
+                            me.questVoidBugKill++;
+                            quest.progressCount = me.questVoidBugKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
                     }
                 }
                 else
@@ -474,20 +481,29 @@ namespace ConsoleApp1
             {
                 remainhp = "Dead";
                 targetMonster.Reward(me);
+                ////////////////////////////////////////////////////////////
+                /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                 /////////////////////////////////////////////////////////////
-                ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                /////////////////////////////////////////////////////////////
-                if (targetMonster.name == "미니언" && me.questMinionKill < 5)
+                foreach (var quest in battlequestlist)
                 {
-                    me.questMinionKill++;
-                }
-                else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5)
-                {
-                    me.questMaxionKill++;
-                }
-                else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5)
-                {
-                    me.questVoidBugKill++;
+                    if (targetMonster.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                    {
+                        me.questMinionKill++;
+                        quest.progressCount = me.questMinionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                    {
+                        me.questMaxionKill++;
+                        quest.progressCount = me.questMaxionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    {
+                        me.questVoidBugKill++;
+                        quest.progressCount = me.questVoidBugKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
                 }
             }
             else
@@ -573,20 +589,29 @@ namespace ConsoleApp1
             {
                 remainhp1 = "Dead";
                 targetMonster1.Reward(me);
+                ////////////////////////////////////////////////////////////
+                /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                 /////////////////////////////////////////////////////////////
-                ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                /////////////////////////////////////////////////////////////
-                if (targetMonster1.name == "미니언" && me.questMinionKill < 5)
+                foreach (var quest in battlequestlist)
                 {
-                    me.questMinionKill++;
-                }
-                else if (targetMonster1.name == "대포미니언" && me.questMaxionKill < 5)
-                {
-                    me.questMaxionKill++;
-                }
-                else if (targetMonster1.name == "공허충" && me.questVoidBugKill < 5)
-                {
-                    me.questVoidBugKill++;
+                    if (targetMonster1.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                    {
+                        me.questMinionKill++;
+                        quest.progressCount = me.questMinionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster1.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                    {
+                        me.questMaxionKill++;
+                        quest.progressCount = me.questMaxionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster1.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    {
+                        me.questVoidBugKill++;
+                        quest.progressCount = me.questVoidBugKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
                 }
             }
             else
@@ -600,20 +625,29 @@ namespace ConsoleApp1
                 {
                     remainhp2 = "Dead";
                     targetMonster2.Reward(me);
+                    ////////////////////////////////////////////////////////////
+                    /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                     /////////////////////////////////////////////////////////////
-                    ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                    /////////////////////////////////////////////////////////////
-                    if (targetMonster2.name == "미니언" && me.questMinionKill < 5)
+                    foreach (var quest in battlequestlist)
                     {
-                        me.questMinionKill++;
-                    }
-                    else if (targetMonster2.name == "대포미니언" && me.questMaxionKill < 5)
-                    {
-                        me.questMaxionKill++;
-                    }
-                    else if (targetMonster2.name == "공허충" && me.questVoidBugKill < 5)
-                    {
-                        me.questVoidBugKill++;
+                        if (targetMonster2.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                        {
+                            me.questMinionKill++;
+                            quest.progressCount = me.questMinionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (targetMonster2.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                        {
+                            me.questMaxionKill++;
+                            quest.progressCount = me.questMaxionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (targetMonster2.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        {
+                            me.questVoidBugKill++;
+                            quest.progressCount = me.questVoidBugKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
                     }
                 }
                 else
@@ -743,20 +777,29 @@ namespace ConsoleApp1
             {
                 remainhp = "Dead";
                 targetMonster.Reward(me);
+                ////////////////////////////////////////////////////////////
+                /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                 /////////////////////////////////////////////////////////////
-                ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                /////////////////////////////////////////////////////////////
-                if (targetMonster.name == "미니언" && me.questMinionKill < 5)
+                foreach (var quest in battlequestlist)
                 {
-                    me.questMinionKill++;
-                }
-                else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5)
-                {
-                    me.questMaxionKill++;
-                }
-                else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5)
-                {
-                    me.questVoidBugKill++;
+                    if (targetMonster.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                    {
+                        me.questMinionKill++;
+                        quest.progressCount = me.questMinionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                    {
+                        me.questMaxionKill++;
+                        quest.progressCount = me.questMaxionKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
+                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    {
+                        me.questVoidBugKill++;
+                        quest.progressCount = me.questVoidBugKill;
+                        break; // 퀘스트 처리 후 반복문 종료
+                    }
                 }
             }
             else
@@ -833,20 +876,29 @@ namespace ConsoleApp1
                 {
                     remainhp = "Dead";
                     monster.Reward(me);
+                    ////////////////////////////////////////////////////////////
+                    /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                     /////////////////////////////////////////////////////////////
-                    ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
-                    /////////////////////////////////////////////////////////////
-                    if (monster.name == "미니언" && me.questMinionKill < 5)
-                    {
-                        me.questMinionKill++;
-                    }
-                    else if (monster.name == "대포미니언" && me.questMaxionKill < 5)
-                    {
-                        me.questMaxionKill++;
-                    }
-                    else if (monster.name == "공허충" && me.questVoidBugKill < 5)
-                    {
-                        me.questVoidBugKill++;
+                    foreach (var quest in battlequestlist)
+                    {                      
+                        if (monster.name == "미니언" && me.questMinionKill < 5 && quest.questTitle == "마을을 위협하는 미니언 처치" && quest.isQuestAccepted)  // 퀘스트가 미니언 처치 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                        {
+                            me.questMinionKill++;
+                            quest.progressCount = me.questMinionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (monster.name == "대포미니언" && me.questMaxionKill < 5 && quest.questTitle == "마을을 위협하는 대포 미니언 처치" && quest.isQuestAccepted)
+                        {
+                            me.questMaxionKill++;
+                            quest.progressCount = me.questMaxionKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
+                        else if (monster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        {
+                            me.questVoidBugKill++;
+                            quest.progressCount = me.questVoidBugKill;
+                            break; // 퀘스트 처리 후 반복문 종료
+                        }
                     }
                 }
             

@@ -54,11 +54,11 @@ namespace ConsoleApp1
 
             if (potionDrop <= 20) //포션 부분
             {
-                int potionType = random.Next(1, 4); // 포션 타입
+                int potionType = random.Next(0, 4); // 포션 타입
 
+                
 
-
-                Battle.pickupPotion = Program.potionlist.GetPotions();
+                Battle.pickupPotion.Add(Program.potionlist.potions[potionType]);
 
 
 

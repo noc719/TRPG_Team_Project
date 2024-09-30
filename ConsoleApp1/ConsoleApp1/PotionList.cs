@@ -6,7 +6,7 @@ namespace ConsoleApp1
     [Serializable]
     public class PotionList
     {
-        private List<Potion> potions = new List<Potion>();
+        public List<Potion> potions = new List<Potion>();
 
         public PotionList()
         {
