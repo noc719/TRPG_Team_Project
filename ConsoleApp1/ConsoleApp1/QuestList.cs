@@ -34,9 +34,5 @@ namespace ConsoleApp1
             }
         }
 
-        public List<Quest> GetQuest()
-        {
-            return questList; // questList 반환
-        }
     }
 }

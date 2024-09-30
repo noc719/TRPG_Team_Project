@@ -13,6 +13,7 @@ namespace ConsoleApp1
         // 퀘스트 씬 출력
         public static void QuestScene(Character me) // 퀘스트 씬
         {
+            
             questList = me.quest;
             Console.Clear(); // 화면 초기화
             Console.WriteLine("Quest!!\n"); // 퀘스트 씬 제목 출력
