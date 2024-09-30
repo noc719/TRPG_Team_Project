@@ -18,6 +18,15 @@ namespace ConsoleApp1
         public int atk { get; set; }
 
 
+
+        //Reward 메소드의 정보를 받아옴
+        public int saveGold = 0;
+        public int potionCount = 0;
+        public List<string> itemCountList = new List<string>();
+        public int SaveExp = 0;
+        
+
+
         //몬스터 정보
         //몬스터 스폰을 랜덤하게
         public Monster(int level, string name, int hp, int def, int atk)
@@ -38,29 +47,24 @@ namespace ConsoleApp1
             int rewardGold = level * random.Next(50, 151);  //50~150 사이의 값에 몬스터의 레벨만큼 
             int potionDrop = random.Next(1, 101);  //포션획득득 확률 백분율
             int itemDrop = random.Next(1, 101); //장비 획득 확률 백분율
-            int rewardExp = level * 1;
+            int rewardExp = level * 1; //경험치 부분
 
 
-            Console.Write("exp {0} -> ",me.exp); //경험치 부분
-            me.exp += rewardExp;
-            Console.WriteLine(" {0}",me.exp);
+            saveGold += rewardGold;
+            SaveExp += rewardExp;
 
-            Console.WriteLine();
-
-            Console.WriteLine("[휙득 아이템]");
-
-            Console.WriteLine("{0}", rewardGold);   //획득 골드 부분
-            me.gold += rewardGold;
 
             if (potionDrop <= 20) //포션 부분
             {
                 int potionType = random.Next(1, 4); // 포션 타입
+
                 List<Potion> potions = new List<Potion>();
 
                 potions = Program.potionlist.GetPotions();
                 PotionInventory.AddPotionToInventory(potions[potionType], me);
 
-                Console.WriteLine("포션 - {0}", potions[potionType]); // 랜덤한 갯수의 포션
+                potionCount++;
+                // 랜덤한 갯수의 포션
 
 
             }
@@ -74,13 +78,16 @@ namespace ConsoleApp1
                 {
                     
                     Console.WriteLine("중복 장비 휙득 - {0}G",randomItem.price/3);  //장비 원값의 3분의 1 가격을 얻음
-                    me.gold += randomItem.price/3;
+                    saveGold += randomItem.price/3;
 
                 }
                 else
                 {
                     me.inventory.Add(randomItem);
                     Console.WriteLine("{0} - 1",randomItem.name);
+
+                    itemCountList.Add(randomItem.name);
+                    
 
                 }
                 
@@ -91,6 +98,29 @@ namespace ConsoleApp1
 
 
         }
+
+        public void ClearReward(Character me)
+        {
+            Console.Write("exp {0} -> ", me.exp); //경험치 부분
+            me.exp += SaveExp;
+            Console.WriteLine(" {0}", me.exp);
+
+            Console.WriteLine();
+
+            Console.WriteLine("[휙득 아이템]");
+
+            Console.WriteLine("{0}", saveGold);   //획득 골드 부분
+            me.gold += saveGold;
+
+           
+
+            Console.WriteLine("획득한 포션 - {0} 개", potionCount);
+
+
+
+        }
+
+
 
 
     }
