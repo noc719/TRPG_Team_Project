@@ -28,5 +28,7 @@ namespace ConsoleApp1
         public int questMinionKill;//미니언 죽인 횟수
         public int questMaxionKill;//대포미니언 죽인 횟수
         public int questVoidBugKill;//공허충 죽인 횟수
+        public List<Quest> quests;
+        public QuestList questlist;
     }
 }

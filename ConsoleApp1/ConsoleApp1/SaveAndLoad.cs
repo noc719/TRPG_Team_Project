@@ -9,7 +9,7 @@ namespace ConsoleApp1
 {
     internal class SaveAndLoad
     {
-        public static void SaveData(Character me, ItemList itemList, PotionList potionList)//저장
+        public static void SaveData(Character me, ItemList itemList, PotionList potionList, QuestList questList)//저장
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(".\\data.dat", FileMode.Create);
@@ -34,12 +34,14 @@ namespace ConsoleApp1
             filesaver.questMinionKill = me.questMinionKill;
             filesaver.questMaxionKill = me.questMaxionKill;
             filesaver.questVoidBugKill = me.questVoidBugKill;
+            filesaver.quests = me.quest;
+            filesaver.questlist = Program.questlist;
             bf.Serialize(fs, filesaver);
 
             fs.Close();
         }
 
-        public static void LoadData(Character me, ItemList itemList, PotionList potionList)//불러오기
+        public static void LoadData(Character me, ItemList itemList, PotionList potionList, QuestList questList)//불러오기
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(".\\data.dat", FileMode.Open);
@@ -64,6 +66,8 @@ namespace ConsoleApp1
             me.questMinionKill = filesaver.questMinionKill;
             me.questMaxionKill = filesaver.questMaxionKill;
             me.questVoidBugKill = filesaver.questVoidBugKill;
+            me.quest = filesaver.quests;
+            Program.questlist = filesaver.questlist;
             fs.Close();
         }
     }

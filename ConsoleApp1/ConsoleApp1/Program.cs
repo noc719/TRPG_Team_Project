@@ -19,6 +19,7 @@ namespace ConsoleApp1
             string? choice;
             itemlist = new ItemList();
             potionlist = new PotionList();
+            questlist = new QuestList();
             if (File.Exists(".\\data.dat"))//저장된 데이터 있는지 확인해서 불러오거나 새로 시작
             {
                 Console.Write($"저장된 데이터가 있습니다.\n불러오시겠습니까?\n\n1.불러오기\n2.새로 시작\n\n원하시는 행동을 입력해주세요.\n>>");
@@ -28,7 +29,7 @@ namespace ConsoleApp1
                     if (choice == "1")
                     {
                         Character me = new Character("");
-                        SaveAndLoad.LoadData(me, itemlist,potionlist);
+                        SaveAndLoad.LoadData(me, itemlist, potionlist, questlist);
                         GameStart(me);
                         a = 1;
                         break;
@@ -139,7 +140,7 @@ namespace ConsoleApp1
                 }
                 else if (choice == "7")
                 {
-                    SaveAndLoad.SaveData(me,itemlist,potionlist);
+                    SaveAndLoad.SaveData(me,itemlist,potionlist, questlist);
                     Console.Write("\n저장되었습니다.\n>> ");
                 }
                 else if (choice == "0")

@@ -9,10 +9,10 @@ namespace ConsoleApp1
     [Serializable]
     public class QuestList
     {
-        public static List<Quest> questList = new List<Quest>();   // Quest에서 받아온 quest를 questList에 받아와서 재생성
+        public static List<Quest> questList = new List<Quest>();
 
         // 퀘스트를 추가하는 메서드
-        public static void QuestAdd()
+        public static void QuestAdd(Character me)
         {
             // 퀘스트 데이터 목록
             var questData = new List<(string title, bool qusetcheck, int porgress, int required, bool isacceped, int reward)>

@@ -16,12 +16,13 @@ namespace ConsoleApp1
         // 퀘스트 씬 출력
         public static void QuestScene(Character me) // 퀘스트 씬
         {
+            questList = me.quest;
             Console.Clear(); // 화면 초기화
             Console.WriteLine("Quest!!\n"); // 퀘스트 씬 제목 출력
            
             if (!isQuestAdded)//가장 처음 시작할때 퀘스트 리스트 받기
             {
-                QuestList.QuestAdd();
+                QuestList.QuestAdd(me);
                 Console.WriteLine("퀘스트 추가 중");
                 isQuestAdded = true;
             }
@@ -57,6 +58,7 @@ namespace ConsoleApp1
                             if (questchoiceNumber == 0) // 마을로 돌아가기 선택
                             {
                                 Program.GameStart(me);
+                                break;
                             }
                             else
                             {
@@ -70,6 +72,7 @@ namespace ConsoleApp1
                         }
                         break;
                     }
+                    break;
                 }
                 else if (choice == "2") // 수락하지 않은 퀘스트 선택
                 {
@@ -89,6 +92,7 @@ namespace ConsoleApp1
                             if (questchoiceNumber == 0) // 마을로 돌아가기 선택
                             {
                                 Program.GameStart(me);
+                                break;
                             }
                             else
                             {
@@ -155,7 +159,7 @@ namespace ConsoleApp1
                 Console.Clear();
                 if (quest.isQuestAccepted && quest.progressCount >= quest.requiredCount)
                 {
-                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n1. 보상 받기\r\n0. 마을로 돌아가기\r\n원하시는 행동을 입력해주세요.\r\n>>");
+                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n1. 보상 받기\r\n0. 마을로 돌아가기\r\n원하시는 행동을 입력해주세요.\r\n>>"); 
                 }
                 else if (quest.isQuestAccepted)
                 {
@@ -179,21 +183,36 @@ namespace ConsoleApp1
                     Console.WriteLine($"{quest.questTitle} 퀘스트를 수락하였습니다!"); // 수락 메시지
                     Console.WriteLine("0번을 눌러서 돌아가세요."); // 돌아가기 안내 메시지
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
-                    if (returnInput == "0") break; // 0번을 누르면 반복문 종료
+                    if (returnInput == "0")
+                    {
+                        Program.GameStart(me);
+                        break;
+                    }
+                    break;
                 }
                 else if (input == "1" && quest.isQuestAccepted && quest.progressCount >= quest.requiredCount) // 보상 수령
                 {
                     Console.WriteLine($"보상으로 {quest.rewardP} G를 받았습니다."); // 보상 메시지
                     Console.WriteLine("0번을 눌러서 돌아가세요."); // 돌아가기 안내 메시지
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
-                    if (returnInput == "0") break; // 0번을 누르면 반복문 종료
+                    if (returnInput == "0")
+                    {
+                        Program.GameStart(me);
+                        break;
+                    }
+                    break;
                 }
                 else if (input == "1" && quest.isQuestAccepted) // 퀘스트 미완료 상태
                 {
                     Console.WriteLine($"아직 {quest.requiredCount - quest.progressCount} 회가 남았습니다"); // 미완료 메시지
                     Console.WriteLine("0번을 눌러서 돌아가세요."); // 돌아가기 안내 메시지
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
-                    if (returnInput == "0") break; // 0번을 누르면 반복문 종료
+                    if (returnInput == "0")
+                    {
+                        Program.GameStart(me);
+                        break;
+                    }
+                    break;
                 }
                 else // 유효하지 않은 입력
                 {

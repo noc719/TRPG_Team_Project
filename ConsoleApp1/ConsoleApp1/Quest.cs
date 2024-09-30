@@ -10,7 +10,6 @@ namespace ConsoleApp1
     [Serializable]
     public class Quest
     {
-        public static List<Quest> quest = new List<Quest>();  // 퀘스트 목록 첫 생성
         // 퀘스트 제목
         public string questTitle { get; private set; }
         // 퀘스트 수락 여부
