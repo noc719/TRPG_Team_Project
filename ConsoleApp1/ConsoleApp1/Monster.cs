@@ -20,10 +20,8 @@ namespace ConsoleApp1
 
 
         //Reward 메소드의 정보를 받아옴
-        public int saveGold = 0;
-        public int potionCount = 0;
-        public List<string> itemCountList = new List<string>();
-        public int SaveExp = 0;
+
+        
         
 
 
@@ -50,20 +48,20 @@ namespace ConsoleApp1
             int rewardExp = level * 1; //경험치 부분
 
 
-            saveGold += rewardGold;
-            SaveExp += rewardExp;
+            Battle.saveGold += rewardGold;
+            Battle.saveExp += rewardExp;
 
 
             if (potionDrop <= 20) //포션 부분
             {
                 int potionType = random.Next(1, 4); // 포션 타입
 
-                List<Potion> potions = new List<Potion>();
+               
 
-                potions = Program.potionlist.GetPotions();
-                PotionInventory.AddPotionToInventory(potions[potionType], me);
+                Battle.pickupPotion = Program.potionlist.GetPotions();
+               
 
-                potionCount++;
+                
                 // 랜덤한 갯수의 포션
 
 
@@ -78,15 +76,15 @@ namespace ConsoleApp1
                 {
                     
                     Console.WriteLine("중복 장비 휙득 - {0}G",randomItem.price/3);  //장비 원값의 3분의 1 가격을 얻음
-                    saveGold += randomItem.price/3;
+                    Battle.saveGold += randomItem.price/3;
 
                 }
                 else
                 {
-                    me.inventory.Add(randomItem);
+                    Battle.pickupItem.Add(randomItem);
                     Console.WriteLine("{0} - 1",randomItem.name);
 
-                    itemCountList.Add(randomItem.name);
+                    
                     
 
                 }
@@ -102,19 +100,28 @@ namespace ConsoleApp1
         public void ClearReward(Character me)
         {
             Console.Write("exp {0} -> ", me.exp); //경험치 부분
-            me.exp += SaveExp;
+            me.exp += Battle.saveExp;
             Console.WriteLine(" {0}", me.exp);
 
             Console.WriteLine();
 
             Console.WriteLine("[휙득 아이템]");
+            foreach (item item in Battle.pickupItem)
+            {
+                me.inventory.Add(item);
+                Console.WriteLine(item.name + " - 1");
+            }
 
-            Console.WriteLine("{0}", saveGold);   //획득 골드 부분
-            me.gold += saveGold;
+            Console.WriteLine("{0}", Battle.saveGold);   //획득 골드 부분
+            me.gold += Battle.saveGold;
 
-           
+           foreach (Potion dropedPotion in Battle.pickupPotion)
+            {
+                
+                PotionInventory.AddPotionToInventory(dropedPotion, me);
+            }
 
-            Console.WriteLine("획득한 포션 - {0} 개", potionCount);
+            Console.WriteLine("획득한 포션 - {0} 개", Battle.pickupPotion.Count);
 
 
 
