@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,6 +12,13 @@ namespace ConsoleApp1
     internal class Battle
     {
         public static int starthp;
+
+        public static int saveGold = 0;
+        public static List<Potion> pickupPotion = new List<Potion>();
+        public static List<item> pickupItem = new List<item>();
+        public static int saveExp = 0;
+
+
 
         public static void EnterBattle(Character me, List<Monster> monsters)
         {
@@ -255,6 +263,8 @@ namespace ConsoleApp1
                 if (targetMonster.hp <= damage)
                 {
                     remainhp = "Dead";
+
+                    targetMonster.Reward(me); //사망시 보상 로직 작동
                     /////////////////////////////////////////////////////////////
                     ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                     /////////////////////////////////////////////////////////////
@@ -377,7 +387,10 @@ namespace ConsoleApp1
         {
             Console.Clear();
             string? choice = "";
-            Console.Write($"Battle!! - Result\n\nVictory\n\nHP {starthp} -> {me.hp}\nMP 10 회복됨\n\n0. 다음\n\n>>");
+            Console.Write($"Battle!! - Result\n\nVictory\n\nHP {starthp} -> {me.hp}\nMP 10 회복됨\n\n");
+            ClearReward(me);
+            Console.Write("0. 다음\n\n>>");
+           
             if (me.mp >= 40)
             {
                 me.mp = 50;
@@ -460,6 +473,7 @@ namespace ConsoleApp1
             if (targetMonster.hp <= damage)
             {
                 remainhp = "Dead";
+                targetMonster.Reward(me);
                 /////////////////////////////////////////////////////////////
                 ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                 /////////////////////////////////////////////////////////////
@@ -558,6 +572,7 @@ namespace ConsoleApp1
             if (targetMonster1.hp <= damage)
             {
                 remainhp1 = "Dead";
+                targetMonster1.Reward(me);
                 /////////////////////////////////////////////////////////////
                 ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                 /////////////////////////////////////////////////////////////
@@ -584,6 +599,7 @@ namespace ConsoleApp1
                 if (targetMonster2.hp <= damage)
                 {
                     remainhp2 = "Dead";
+                    targetMonster2.Reward(me);
                     /////////////////////////////////////////////////////////////
                     ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                     /////////////////////////////////////////////////////////////
@@ -726,6 +742,7 @@ namespace ConsoleApp1
             if (targetMonster.hp <= damage)
             {
                 remainhp = "Dead";
+                targetMonster.Reward(me);
                 /////////////////////////////////////////////////////////////
                 ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                 /////////////////////////////////////////////////////////////
@@ -815,6 +832,7 @@ namespace ConsoleApp1
                 if (monster.hp <= damage)
                 {
                     remainhp = "Dead";
+                    monster.Reward(me);
                     /////////////////////////////////////////////////////////////
                     ///몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트몬스터++;
                     /////////////////////////////////////////////////////////////
@@ -879,5 +897,41 @@ namespace ConsoleApp1
                 }
             }
         }
+
+
+        public static void ClearReward(Character me)
+        {
+            Console.Write("exp {0} -> ", me.exp); //경험치 부분
+            me.exp += Battle.saveExp;
+            Console.WriteLine(" {0}", me.exp);
+
+            Console.WriteLine();
+
+            Console.WriteLine("[휙득 아이템]");
+            foreach (item item in Battle.pickupItem)
+            {
+                me.inventory.Add(item);
+                Console.WriteLine(item.name + " - 1");
+            }
+
+            Console.WriteLine("{0}", Battle.saveGold);   //획득 골드 부분
+            me.gold += Battle.saveGold;
+
+            foreach (Potion dropedPotion in Battle.pickupPotion)
+            {
+
+                PotionInventory.AddPotionToInventory(dropedPotion, me);
+            }
+
+            Console.WriteLine("획득한 포션 - {0} 개", Battle.pickupPotion.Count);
+
+
+
+        }
+
+
+
+
     }
 }
+
