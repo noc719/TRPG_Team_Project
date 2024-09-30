@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,44 +36,56 @@ namespace ConsoleApp1
            
 
             int rewardGold = level * random.Next(50, 151);  //50~150 사이의 값에 몬스터의 레벨만큼 
-            int potionDrop = random.Next(1, 101);  //포션휙득 확률 백분율
-            
-            int itemDrop = random.Next(1, 101); //장비 휙득 확률 백분율
-            
+            int potionDrop = random.Next(1, 101);  //포션획득득 확률 백분율
+            int itemDrop = random.Next(1, 101); //장비 획득 확률 백분율
+            int rewardExp = level * 1;
+
+
+            Console.Write("exp {0} -> ",me.exp); //경험치 부분
+            me.exp += rewardExp;
+            Console.WriteLine(" {0}",me.exp);
+
+            Console.WriteLine();
+
             Console.WriteLine("[휙득 아이템]");
-            Console.WriteLine("{0}", rewardGold);
 
+            Console.WriteLine("{0}", rewardGold);   //획득 골드 부분
             me.gold += rewardGold;
-            if (potionDrop <= 20)
+
+            if (potionDrop <= 20) //포션 부분
             {
-
-                
-
                 int potionType = random.Next(1, 4); // 포션 타입
-                
-                Console.WriteLine("포션 - {}"); // 랜덤한 갯수의 포션
-
-
                 List<Potion> potions = new List<Potion>();
-               
 
                 potions = Program.potionlist.GetPotions();
                 PotionInventory.AddPotionToInventory(potions[potionType], me);
-                    //potions[potionType]
 
-
+                Console.WriteLine("포션 - {0}", potions[potionType]); // 랜덤한 갯수의 포션
 
 
             }
-            //if(itemDrop == 1) 
-            //{
-            //    int itemType
-            //    Console.WriteLine("장비 이름 - 1"); 
-                
+            if(itemDrop == 1)
+            {
+                //아이템 타입에 따른 
+                int itemType = random.Next(0,Program.itemlist.items.Length); 
 
+                item randomItem = Program.itemlist.items[itemType]; 
+                if (randomItem.isBought == true) //중복된 장비일 경우
+                {
+                    
+                    Console.WriteLine("중복 장비 휙득 - {0}G",randomItem.price/3);  //장비 원값의 3분의 1 가격을 얻음
+                    me.gold += randomItem.price/3;
+
+                }
+                else
+                {
+                    me.inventory.Add(randomItem);
+                    Console.WriteLine("{0} - 1",randomItem.name);
+
+                }
                 
-            //    //휙득하지 못한 장비 
-            //}
+         
+            }
             
             
 
