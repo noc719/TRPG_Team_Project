@@ -224,6 +224,9 @@ namespace ConsoleApp1
             Random random = new Random();
             bool isAllKill = true;
             int bonusDamage = 0;
+            int evade=0;
+            evade=random.Next(1,11);
+            int critical = 0;
             string? choice = "";
             bonusDamage = (int)me.atk / 10;
             if (me.atk % 10 != 0)
@@ -234,24 +237,37 @@ namespace ConsoleApp1
             damage = random.Next(damage - bonusDamage, damage + bonusDamage + 1);
             Monster targetMonster = monsterList[target - 1];
             string remainhp = "";
-            if (targetMonster.hp <= damage)
-            {
-                remainhp = "Dead";
-            }
-            else
-            {
-                remainhp = (targetMonster.hp - damage).ToString();
-            }
             Console.Clear();
-            Console.Write($"Battle!!\n\n{me.name} 의 공격!\nLv.{targetMonster.level} {targetMonster.name} 을(를) 맞췄습니다. [데미지 : {damage}]\n\n" +
-                $"Lv.{targetMonster.level} {targetMonster.name}\nHP {targetMonster.hp} -> {remainhp}\n\n0. 다음\n\n>>");
-            if (targetMonster.hp >= damage)
+            if (evade == 1)
             {
-                targetMonster.hp -= damage;
+                Console.Write($"Battle!!\n\n{me.name} 의 공격!\nLv.{targetMonster.level} {targetMonster.name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.\n\n0. 다음\n\n>>");
             }
             else
             {
-                targetMonster.hp = 0; ;
+                critical = random.Next(1, 101);
+                if (critical < 16)
+                {
+                    damage = (int)(damage * 1.6);
+                }
+                if (targetMonster.hp <= damage)
+                {
+                    remainhp = "Dead";
+                }
+                else
+                {
+                    remainhp = (targetMonster.hp - damage).ToString();
+                }
+                Console.Write($"Battle!!\n\n{me.name} 의 공격!\nLv.{targetMonster.level} {targetMonster.name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                if (critical < 16) { Console.WriteLine(" - 치명타 공격!!"); }
+                Console.Write($"\n\nLv.{targetMonster.level} {targetMonster.name}\nHP {targetMonster.hp} -> {remainhp}\n\n0. 다음\n\n>>");
+                if (targetMonster.hp >= damage)
+                {
+                    targetMonster.hp -= damage;
+                }
+                else
+                {
+                    targetMonster.hp = 0; ;
+                }
             }
             while (true)
             {
