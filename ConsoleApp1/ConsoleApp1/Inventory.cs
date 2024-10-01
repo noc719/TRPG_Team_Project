@@ -140,7 +140,7 @@ namespace ConsoleApp1
                                     if (item.isEquipped == true && item.stat == "공격력")
                                     {
                                         item.isEquipped = false;
-                                        me.def -= item.statNum;
+                                        me.atk -= item.statNum;
                                     }
                                 }
                                 me.atk += selected.statNum;
