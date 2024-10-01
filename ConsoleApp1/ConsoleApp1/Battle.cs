@@ -965,17 +965,17 @@ namespace ConsoleApp1
             Console.WriteLine("[캐릭터 정보]");
 
             Console.Write($"Lv.{startLevel} {me.name} ->"); //레벨
-            Console.WriteLine($"Lv.{me.level} {me.name}");
+            Console.WriteLine($" Lv.{me.level} {me.name}");
 
             Console.WriteLine($"HP { starthp} -> { me.hp}");  //hp
             Console.WriteLine("MP 10 회복됨");
 
             Console.Write("exp {0} -> ", startExp);  //exp
-            Console.WriteLine(" {0}", me.exp);
+            Console.WriteLine("{0}", me.exp);
 
             Console.WriteLine();
 
-            Console.WriteLine("[휙득 아이템]");
+            Console.WriteLine("[획득 아이템]");
             foreach (item item in Battle.pickupItem)
             {
                 me.inventory.Add(item);

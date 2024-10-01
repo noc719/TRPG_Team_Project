@@ -12,7 +12,7 @@ namespace ConsoleApp1
         public static void SaveData(Character me, ItemList itemList, PotionList potionList, QuestList questList)//저장
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream fs = new FileStream(".\\data.dat", FileMode.Create);
+            FileStream fs = new FileStream("data.dat", FileMode.Create);
 
             DataField filesaver = new DataField();
 
@@ -46,7 +46,7 @@ namespace ConsoleApp1
         public static void LoadData(Character me, ItemList itemList, PotionList potionList, QuestList questList)//불러오기
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream fs = new FileStream(".\\data.dat", FileMode.Open);
+            FileStream fs = new FileStream("data.dat", FileMode.Open);
 
             DataField filesaver = new DataField();
             filesaver = bf.Deserialize(fs) as DataField;
