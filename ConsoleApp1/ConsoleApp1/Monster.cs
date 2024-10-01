@@ -42,7 +42,7 @@ namespace ConsoleApp1
             Random random = new Random();
 
 
-            int rewardGold = level * random.Next(50, 151);  //50~150 사이의 값에 몬스터의 레벨만큼 
+            int rewardGold = level * random.Next(20, 51);  //20~50 사이의 값에 몬스터의 레벨만큼 
             int potionDrop = random.Next(1, 101);  //포션획득득 확률 백분율
             int itemDrop = random.Next(1, 101); //장비 획득 확률 백분율
             int rewardExp = level * 1; //경험치 부분
@@ -66,7 +66,7 @@ namespace ConsoleApp1
 
 
             }
-            if (itemDrop == 1)
+            if (itemDrop ==1)
             {
                 //아이템 타입에 따른 
                 int itemType = random.Next(0, Program.itemlist.items.Length);

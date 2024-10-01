@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,9 +11,13 @@ namespace ConsoleApp1
 {
     internal class Battle
     {
+        //초기 변수값
         public static int starthp;
+        public static int startLevel;
+        public static int startExp;
+        //보상 저장소
         public static int saveGold = 0;
-        public static List<Potion> pickupPotion = new List<Potion>();
+        public static List<Potion> pickupPotion = new List<Potion>();     
         public static List<item> pickupItem = new List<item>();
         public static int saveExp = 0;
         private static List<Quest> battlequestlist = Program.questlist.quests;
@@ -26,6 +31,8 @@ namespace ConsoleApp1
             if (monsters == null)
             {
                 starthp = me.hp;
+                startLevel = me.level;
+                startExp = me.exp;
                 Random random = new Random();
                 int monsterCount = 0;
                 monsterCount = random.Next(1, 5);
@@ -393,7 +400,7 @@ namespace ConsoleApp1
         {
             Console.Clear();
             string? choice = "";
-            Console.Write($"Battle!! - Result\n\nVictory\n\nHP {starthp} -> {me.hp}\nMP 10 회복됨\n\n");
+            Console.Write($"Battle!! - Result\n\nVictory\n\n");
             ClearReward(me);
             Console.Write("0. 다음\n\n>>");
            
@@ -952,8 +959,18 @@ namespace ConsoleApp1
 
         public static void ClearReward(Character me)
         {
-            Console.Write("exp {0} -> ", me.exp); //경험치 부분
-            me.exp += Battle.saveExp;
+            me.exp += Battle.saveExp; //levelsystem
+            me.LevelSystem();
+
+            Console.WriteLine("[캐릭터 정보]");
+
+            Console.Write($"Lv.{startLevel} {me.name} ->"); //레벨
+            Console.WriteLine($"Lv.{me.level} {me.name}");
+
+            Console.WriteLine($"HP { starthp} -> { me.hp}");  //hp
+            Console.WriteLine("MP 10 회복됨");
+
+            Console.Write("exp {0} -> ", startExp);  //exp
             Console.WriteLine(" {0}", me.exp);
 
             Console.WriteLine();

@@ -21,6 +21,7 @@ namespace ConsoleApp1
         public List<Potion> potionsInverntory;
         public List<Quest> quest;
         public int exp;
+        public int expLimit = 10;
         public int mp;
         public int maxmp;
         public int questMinionKill;//미니언 죽인 횟수
@@ -49,7 +50,7 @@ namespace ConsoleApp1
             questVoidBugKill = 0;//공허충 죽인 횟수
             questItemBuy = 0;//상점에서 아이템 구매
             questItemEquip = 0;//인벤토리에서 장착아이템 장착
-    }
+        }
         public void ClearStage()
         {
             exp++;
@@ -62,5 +63,26 @@ namespace ConsoleApp1
             }
         }
 
+        public void LevelSystem()
+        {
+            while (true)
+            {
+                if (exp > expLimit)
+                {
+                    exp -= expLimit;
+                    expLimit += 20 + (level * 5);
+                    level++;
+
+                    atk += 0.5f;
+                    def += 1;
+
+
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
     }
 }
