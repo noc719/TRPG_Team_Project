@@ -16,7 +16,8 @@ namespace ConsoleApp1
             
             //questList = me.quest;
             Console.Clear(); // 화면 초기화
-            Console.WriteLine("Quest!!\n"); // 퀘스트 씬 제목 출력
+            Console.WriteLine("Quest!!"); // 퀘스트 씬 제목 출력
+            Console.WriteLine("퀘스트를 수락하거나 관리할 수 있는 화면입니다.\n");
             /*
             if (!isQuestAdded)//시작할때 퀘스트 리스트 받기
             {
@@ -26,9 +27,10 @@ namespace ConsoleApp1
             */
 
             // 선택 옵션 출력
-            Console.WriteLine("1. 수락하지 않은 퀘스트");
-            Console.WriteLine("2. 수락한 퀘스트");
+            Console.WriteLine("1. 수락하지 않은 퀘스트 목록 보기");
+            Console.WriteLine("2. 수락한 퀘스트 목록 보기");
             Console.WriteLine("0. 나가기\n");
+            Console.WriteLine("원하시는 행동을 입력해 주세요.");
             Console.Write(">>");
             // 사용자 입력 대기
             while (true)
@@ -61,6 +63,9 @@ namespace ConsoleApp1
             while (true)
             {
                 Console.Clear(); // 화면 초기화
+                Console.WriteLine("Quest!! - 수락한 퀘스트 목록"); // 퀘스트 씬 제목 출력
+                Console.WriteLine("퀘스트를 수락하거나 관리할 수 있는 화면입니다.\n");
+                Console.WriteLine("[퀘스트 목록]\n");
                 for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
                 {
                     AcceptedQuestListOutput(i); // 수락한 퀘스트 출력
@@ -93,6 +98,9 @@ namespace ConsoleApp1
             while (true)
             {
                 Console.Clear(); // 화면 초기화
+                Console.WriteLine("Quest!! - 수락하지 않은 퀘스트 목록"); // 퀘스트 씬 제목 출력
+                Console.WriteLine("퀘스트를 수락하거나 관리할 수 있는 화면입니다.\n");
+                Console.WriteLine("[퀘스트 목록]\n"); // 퀘스트 씬 제목 출력
                 for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
                 {
                     NotAcceptedQuestListOutput(i); // 수락하지 않은 퀘스트 출력
@@ -177,15 +185,15 @@ namespace ConsoleApp1
                 Console.Clear();
                 if (quest.isQuestAccepted && quest.progressCount >= quest.requiredCount)
                 {
-                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n{(quest.questClearCheck ? "" : "1. 보상 받기")}\r\n0. 퀘스트 선택창으로 돌아가기\r\n원하시는 행동을 입력해주세요.\r\n>>");
+                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n{(quest.questClearCheck ? "" : "1. 보상 받기")}\r\n0. 퀘스트 선택창으로 돌아가기\r\n\n원하시는 행동을 입력해주세요.\r\n>>");
                 }
                 else if (quest.isQuestAccepted)
                 {
-                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n0. 퀘스트 선택창으로 돌아가기\r\n원하시는 행동을 입력해주세요.\r\n>>");
+                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n0. 퀘스트 선택창으로 돌아가기\r\n\n원하시는 행동을 입력해주세요.\r\n>>");
                 }
                 else
                 {
-                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n1. 수락\r\n0. 퀘스트 선택창으로 돌아가기\r\n원하시는 행동을 입력해주세요.\r\n>>");
+                    Console.Write($"Quest!!\r\n\r\n{quest.questTitle}\r\n\r\n너같은 뉴비한테는 이 퀘스트가 딱이야\r\n\r\n\r\n- {quest.questTitle}. {quest.progressCount} / {quest.requiredCount}\r\n\r\n- 보상- \n{quest.rewardP} G\r\n\r\n1. 수락\r\n0. 퀘스트 선택창으로 돌아가기\r\n\n원하시는 행동을 입력해주세요.\r\n>>");
                 }
 
                 string? input = Console.ReadLine(); // 사용자 입력 받기

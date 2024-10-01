@@ -75,7 +75,7 @@ namespace ConsoleApp1
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n1. 공격\n2. 스킬\n\n원하시는 행동을 입력해주세요.\n>>");
+            Console.Write($"\n\n[내정보]\n\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\nMP {me.mp} / {me.maxmp}\n\n1. 공격\n2. 스킬\n\n원하시는 행동을 입력해주세요.\n>>");
             while (true)
             {
                 choice = Console.ReadLine();
@@ -107,16 +107,16 @@ namespace ConsoleApp1
                 count++;
                 if (monster.hp > 0)
                 {
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  HP{monster.hp}");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  HP{monster.hp}");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  Dead");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  Dead");
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n");
+            Console.Write($"\n\n[내정보]\n\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\nMP {me.mp} / {me.maxmp}\n\n");
             Console.Write("0. 취소\n\n대상을 선택해주세요.\n>>");
             while (true)
             {
@@ -156,16 +156,16 @@ namespace ConsoleApp1
                 count++;
                 if (monster.hp > 0)
                 {
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  HP{monster.hp}");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  HP{monster.hp}");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  Dead");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  Dead");
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n");
+            Console.Write($"\n\n[내정보]\n\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\nMP {me.mp} / {me.maxmp}\n\n");
             if (me.job == "전사")
             {
                 Console.Write($"1. 알파 스트라이크 - MP 10\n   공격력 * 2 로 하나의 적을 공격합니다.\n\n" +
@@ -440,16 +440,16 @@ namespace ConsoleApp1
                 count++;
                 if (monster.hp > 0)
                 {
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  HP{monster.hp}");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  HP{monster.hp}");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  Dead");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  Dead");
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n");
+            Console.Write($"\n\n[내정보]\n\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\nMP {me.mp} / {me.maxmp}\n\n");
             Console.Write("0. 취소\n\n대상을 선택해주세요.\n>>");
             while (true)
             {
@@ -736,16 +736,16 @@ namespace ConsoleApp1
                 count++;
                 if (monster.hp > 0)
                 {
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  HP{monster.hp}");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  HP{monster.hp}");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"{count} Lv.{monster.level} {monster.name}  Dead");
+                    Console.WriteLine($"{count}. Lv.{monster.level} {monster.name}  Dead");
                     Console.ResetColor();
                 }
             }
-            Console.Write($"\n\n[내정보]\nLv.{me.level} {me.name} ({me.job})\nHP {me.maxhp}/{me.hp}\nMP {me.maxmp} / {me.mp}\n\n");
+            Console.Write($"\n\n[내정보]\n\nLv.{me.level} {me.name} ({me.job})\nHP {me.hp}/{me.maxhp}\nMP {me.mp} / {me.maxmp}\n\n");
             Console.Write("0. 취소\n\n대상을 선택해주세요.\n>>");
             while (true)
             {
