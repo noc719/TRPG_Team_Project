@@ -255,14 +255,14 @@ namespace ConsoleApp1
                                     {
                                         me.mp = me.maxmp;
                                         Console.WriteLine("마나가 완전히 회복되었습니다.");
-                                        Console.WriteLine("");
+                                        Console.WriteLine();
 
                                         Exit(me);
                                         break;
                                     }
 
                                     Console.WriteLine($"{potion.potionName}을 사용하여 +{potion.potionHealAmount}을 회복했습니다.\n현재 MP: {me.mp}/{me.maxmp}");
-                                    Console.WriteLine("");
+                                    Console.WriteLine();
 
                                     Exit(me);
                                     break;
