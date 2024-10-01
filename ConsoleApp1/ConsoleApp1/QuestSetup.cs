@@ -41,66 +41,43 @@ namespace ConsoleApp1
                 }
                 else if (choice == "1") // 수락한 퀘스트 선택
                 {
-                    while (true)
-                    {
-                        Console.Clear(); // 화면 초기화
-                        for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
-                        {
-                            NotAcceptedQuestListOutput(i); // 수락하지 않은 퀘스트 출력
-                        }
-                        Console.WriteLine("\n0. 이전으로 돌아가기");
-                        Console.WriteLine("\n원하시는 선택지를 선택해주세요");
-                        Console.Write(">>");
-                        string? questchoice = Console.ReadLine(); // 퀘스트 선택 받기
-                        if (int.TryParse(questchoice, out int questchoiceNumber)) // 숫자로 변환
-                        {
-                            if (questchoiceNumber == 0) // 마을로 돌아가기 선택
-                            {
-                                QuestSetup.QuestScene(me);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\n"); QuestChoiceScene(me, questchoiceNumber); // 선택한 퀘스트 씬으로 이동
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요."); // 유효하지 않은 입력
-                        }
-                        break;
-                    }
+                    NotAcceptedQuestListScene(me);
                     break;
+
                 }
                 else if (choice == "2") // 수락하지 않은 퀘스트 선택
                 {
-                    while (true)
+                    AcceptedQuestListScene(me);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요."); // 유효하지 않은 입력
+                }
+            }
+        }
+        public static void AcceptedQuestListScene(Character me)
+        {
+            while (true)
+            {
+                Console.Clear(); // 화면 초기화
+                for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
+                {
+                    AcceptedQuestListOutput(i); // 수락한 퀘스트 출력
+                }
+                Console.WriteLine("\n0. 이전으로 돌아가기");
+                Console.WriteLine("\n원하시는 퀘스트를 선택해주세요");
+                Console.Write(">>");
+                string? questchoice = Console.ReadLine(); // 퀘스트 선택 받기
+                if (int.TryParse(questchoice, out int questchoiceNumber)) // 숫자로 변환
+                {
+                    if (questchoiceNumber == 0) // 마을로 돌아가기 선택
                     {
-                        Console.Clear(); // 화면 초기화
-                        for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
-                        {
-                            AcceptedQuestListOutput(i); // 수락한 퀘스트 출력
-                        }
-                        Console.WriteLine("\n0. 이전으로 돌아가기");
-                        Console.WriteLine("\n원하시는 퀘스트를 선택해주세요");
-                        Console.Write(">>");
-                        string? questchoice = Console.ReadLine(); // 퀘스트 선택 받기
-                        if (int.TryParse(questchoice, out int questchoiceNumber)) // 숫자로 변환
-                        {
-                            if (questchoiceNumber == 0) // 마을로 돌아가기 선택
-                            {
-                                QuestSetup.QuestScene(me);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\n"); QuestChoiceScene(me, questchoiceNumber); // 선택한 퀘스트 씬으로 이동
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요."); // 유효하지 않은 입력
-                        }
+                        QuestSetup.QuestScene(me);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n"); QuestChoiceScene(me, questchoiceNumber); // 선택한 퀘스트 씬으로 이동
                     }
                     break;
                 }
@@ -108,6 +85,39 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요."); // 유효하지 않은 입력
                 }
+            }
+        }
+
+        public static void NotAcceptedQuestListScene(Character me)
+        {
+            while (true)
+            {
+                Console.Clear(); // 화면 초기화
+                for (int i = 0; i < questList.Count; i++) // 퀘스트 리스트 출력
+                {
+                    NotAcceptedQuestListOutput(i); // 수락하지 않은 퀘스트 출력
+                }
+                Console.WriteLine("\n0. 이전으로 돌아가기");
+                Console.WriteLine("\n원하시는 선택지를 선택해주세요");
+                Console.Write(">>");
+                string? questchoice = Console.ReadLine(); // 퀘스트 선택 받기
+                if (int.TryParse(questchoice, out int questchoiceNumber)) // 숫자로 변환
+                {
+                    if (questchoiceNumber == 0) // 마을로 돌아가기 선택
+                    {
+                        QuestSetup.QuestScene(me);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n"); QuestChoiceScene(me, questchoiceNumber); // 선택한 퀘스트 씬으로 이동
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요."); // 유효하지 않은 입력
+                }
+                break;
             }
         }
 
@@ -180,9 +190,13 @@ namespace ConsoleApp1
 
                 string? input = Console.ReadLine(); // 사용자 입력 받기
 
-                if (input == "0") // 마을로 돌아가기 선택
+                if (input == "0" && quest.isQuestAccepted) // 이전로 돌아가기 선택
                 {
-                    QuestScene(me);
+                    AcceptedQuestListScene(me);
+                    break; // 반복문 종료
+                }else if(input == "0" && !quest.isQuestAccepted)
+                {
+                    NotAcceptedQuestListScene(me);
                     break; // 반복문 종료
                 }
                 else if (input == "1" && !quest.isQuestAccepted) // 퀘스트 수락
@@ -193,7 +207,7 @@ namespace ConsoleApp1
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
                     if (returnInput == "0")
                     {
-                        QuestScene(me);
+                        NotAcceptedQuestListScene(me);
                         break;
                     }
                 }
@@ -201,7 +215,7 @@ namespace ConsoleApp1
                 {
                     quest.questClearCheck = true;
                     Console.WriteLine($"\n보상으로 {quest.rewardP} G를 받았습니다."); // 보상 메시지
-                    Console.WriteLine("퀘스트 씬으로 돌아가시겠습니까?\n1. 예\n0. 마을로 돌아가기"); // 추가 선택지 제공
+                    Console.WriteLine("이전으로 돌아가시겠습니까?\n1. 예\n0. 마을로 돌아가기"); // 추가 선택지 제공
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
 
                     if (returnInput == "0")
@@ -211,7 +225,7 @@ namespace ConsoleApp1
                     }
                     else if (returnInput == "1")
                     {
-                        QuestSetup.QuestScene(me); // 퀘스트 씬으로 다시 돌아가기
+                        AcceptedQuestListScene(me);// 퀘스트 씬으로 다시 돌아가기
                         break;
                     }
                 }
@@ -222,7 +236,7 @@ namespace ConsoleApp1
                     string? returnInput = Console.ReadLine(); // 사용자 입력 대기
                     if (returnInput == "0")
                     {
-                        QuestScene(me);
+                        AcceptedQuestListScene(me);
                         break;
                     }
                 }
