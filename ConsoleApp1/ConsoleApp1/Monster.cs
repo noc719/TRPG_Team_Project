@@ -71,25 +71,7 @@ namespace ConsoleApp1
                 //아이템 타입에 따른 
                 int itemType = random.Next(0, Program.itemlist.items.Length);
 
-                item randomItem = Program.itemlist.items[itemType];
-                if (randomItem.isBought == true) //중복된 장비일 경우
-                {
-
-                    Console.WriteLine("중복 장비 휙득 - {0}G", randomItem.price / 3);  //장비 원값의 3분의 1 가격을 얻음
-                    Battle.saveGold += randomItem.price / 3;
-
-                }
-                else
-                {
-                    Battle.pickupItem.Add(randomItem);
-                    Console.WriteLine("{0} - 1", randomItem.name);
-
-
-
-
-                }
-
-
+                item randomItem = Program.itemlist.items[itemType];Battle.pickupItem.Add(randomItem);
             }
 
 
