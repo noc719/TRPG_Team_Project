@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    // 퀘스트가 추가된 부분 : 258, 462, 561, 586, 728, 817 
     internal class Battle
     {
         public static int starthp;
