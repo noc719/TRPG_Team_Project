@@ -287,7 +287,7 @@ namespace ConsoleApp1
                             quest.progressCount = me.questMaxionKill;
                             break; // 퀘스트 처리 후 반복문 종료
                         }
-                        else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                         {
                             me.questVoidBugKill++;
                             quest.progressCount = me.questVoidBugKill;
@@ -505,7 +505,7 @@ namespace ConsoleApp1
                         quest.progressCount = me.questMaxionKill;
                         break; // 퀘스트 처리 후 반복문 종료
                     }
-                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                     {
                         me.questVoidBugKill++;
                         quest.progressCount = me.questVoidBugKill;
@@ -613,7 +613,7 @@ namespace ConsoleApp1
                         quest.progressCount = me.questMaxionKill;
                         break; // 퀘스트 처리 후 반복문 종료
                     }
-                    else if (targetMonster1.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    else if (targetMonster1.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                     {
                         me.questVoidBugKill++;
                         quest.progressCount = me.questVoidBugKill;
@@ -649,7 +649,7 @@ namespace ConsoleApp1
                             quest.progressCount = me.questMaxionKill;
                             break; // 퀘스트 처리 후 반복문 종료
                         }
-                        else if (targetMonster2.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        else if (targetMonster2.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                         {
                             me.questVoidBugKill++;
                             quest.progressCount = me.questVoidBugKill;
@@ -801,7 +801,7 @@ namespace ConsoleApp1
                         quest.progressCount = me.questMaxionKill;
                         break; // 퀘스트 처리 후 반복문 종료
                     }
-                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                    else if (targetMonster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                     {
                         me.questVoidBugKill++;
                         quest.progressCount = me.questVoidBugKill;
@@ -900,7 +900,7 @@ namespace ConsoleApp1
                             quest.progressCount = me.questMaxionKill;
                             break; // 퀘스트 처리 후 반복문 종료
                         }
-                        else if (monster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치" && quest.isQuestAccepted)
+                        else if (monster.name == "공허충" && me.questVoidBugKill < 5 && quest.questTitle == "마을을 위협하는 공허충 처치 이브" && quest.isQuestAccepted)
                         {
                             me.questVoidBugKill++;
                             quest.progressCount = me.questVoidBugKill;
