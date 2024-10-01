@@ -30,7 +30,7 @@ namespace ConsoleApp1
             Console.WriteLine("[포션 목록]\n");
             foreach (Potion potion in me.potionsInverntory)
             {
-                Console.WriteLine($"- {potion.potionName} X{potion.potionQuantity}");
+                Console.WriteLine($"- {potion.potionName} X {potion.potionQuantity}");
             }
             Console.WriteLine();
 
@@ -183,7 +183,7 @@ namespace ConsoleApp1
                 Console.WriteLine("[포션 목록]\n");
                 foreach (Potion potion in me.potionsInverntory) //potion list
                 {
-                Console.WriteLine($"{count}. {potion.potionName} | 회복량: +{potion.potionHealAmount} | {potion.potionDescribe} | X{potion.potionQuantity}");
+                Console.WriteLine($"{count}. {potion.potionName} | 회복량: + {potion.potionHealAmount} | {potion.potionDescribe} | X {potion.potionQuantity}");
                 count++;
                 }
                 Console.WriteLine();
@@ -228,7 +228,7 @@ namespace ConsoleApp1
                                         }
                                     }
 
-                                    Console.WriteLine($"{potion.potionName}을 사용하여 +{potion.potionHealAmount}을 회복했습니다.\n현재 HP: {me.hp}/{me.maxhp}");
+                                    Console.WriteLine($"{potion.potionName}을 사용하여 + {potion.potionHealAmount}을 회복했습니다.\n현재 HP: {me.hp}/{me.maxhp}");
                                     Console.WriteLine("");
 
                                     Console.WriteLine("0. 나가기\n>>>");

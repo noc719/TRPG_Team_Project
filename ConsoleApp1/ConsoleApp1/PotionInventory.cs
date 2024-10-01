@@ -7,14 +7,15 @@ namespace ConsoleApp1
         //shop & dungeon
         public static void AddPotionToInventory(Potion potion, Character me)
         {
-            var existingPotion = me.potionsInverntory.Find(p => p.potionName == potion.potionName);
-            if (existingPotion == null)
+            var existingPotion = me.potionsInverntory.FirstOrDefault(p => p.potionName == potion.potionName);
+
+            if( existingPotion == null)
             {
-                me.potionsInverntory.Add(potion);
+                me.potionsInverntory.Add(new Potion(potion.potionType, potion.potionName, potion.potionHealAmount, potion.potionDescribe, potion.potionQuantity));
             }
             else
             {
-               existingPotion.potionQuantity += potion.potionQuantity;
+                existingPotion.potionQuantity += potion.potionQuantity;
             }
         }
     }
