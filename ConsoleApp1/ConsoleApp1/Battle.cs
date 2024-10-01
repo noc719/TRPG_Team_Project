@@ -994,6 +994,10 @@ namespace ConsoleApp1
             Console.WriteLine("획득한 포션 - {0} 개", Battle.pickupPotion.Count);
 
 
+            saveGold = 0;
+            saveExp = 0;
+            pickupPotion.Clear();
+            pickupItem.Clear();
 
         }
 
