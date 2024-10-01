@@ -268,7 +268,7 @@ namespace ConsoleApp1
                 if (targetMonster.hp <= damage)
                 {
                     remainhp = "Dead";
-
+                    targetMonster.Reward(me);
                     ////////////////////////////////////////////////////////////
                     /// 몬스터 사망시 죽은 몬스터 이름에 따라 퀘스트 진행도 증가
                     /////////////////////////////////////////////////////////////
@@ -994,6 +994,10 @@ namespace ConsoleApp1
             Console.WriteLine("획득한 포션 - {0} 개", Battle.pickupPotion.Count);
 
 
+            saveGold = 0;
+            saveExp = 0;
+            pickupPotion.Clear();
+            pickupItem.Clear();
 
         }
 
