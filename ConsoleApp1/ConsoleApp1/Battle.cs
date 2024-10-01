@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -978,8 +979,17 @@ namespace ConsoleApp1
             Console.WriteLine("[획득 아이템]");
             foreach (item item in Battle.pickupItem)
             {
-                me.inventory.Add(item);
-                Console.WriteLine(item.name + " - 1");
+                if (item.isBought == true) //중복된 장비일 경우
+                {
+                    Console.WriteLine("중복 장비 휙득 - {0}G", item.price / 3);  //장비 원값의 3분의 1 가격을 얻음
+                    Battle.saveGold += item.price / 3;
+                }
+                else
+                {
+                    item.isBought = true;
+                    me.inventory.Add(item);
+                    Console.WriteLine("{0} - 1", item.name);
+                }
             }
 
             Console.WriteLine("{0}", Battle.saveGold);   //획득 골드 부분
