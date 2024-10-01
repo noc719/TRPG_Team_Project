@@ -30,7 +30,7 @@ namespace ConsoleApp1
             filesaver.potionsInverntory = me.potionsInverntory;
             filesaver.potionlist = Program.potionlist;
             filesaver.mp = me.mp;
-            filesaver.maxmp = me.mp;
+            filesaver.maxmp = me.maxmp;
             filesaver.questMinionKill = me.questMinionKill;
             filesaver.questMaxionKill = me.questMaxionKill;
             filesaver.questVoidBugKill = me.questVoidBugKill;
