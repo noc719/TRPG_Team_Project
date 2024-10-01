@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
     internal class Inventory
-    {   
+    {
+        private static List<Quest> battlequestlist = Program.questlist.quests;
         public static void EnterInventory(Character me) //인벤토리
         {
             int a = 0;
@@ -106,9 +107,17 @@ namespace ConsoleApp1
                         }
                         else if (selected.isEquipped == false)
                         {
-                            if (me.questItemEquip < 1)
+                            ////////////////////////////////////////////////////////////
+                            /// 아이템 장착시 퀫스트 진행도 증가
+                            /////////////////////////////////////////////////////////////
+                            foreach (var quest in battlequestlist)
                             {
-                                me.questItemEquip++;
+                                if (me.questItemEquip < 1 && quest.questTitle == "장비 장착하기" && quest.isQuestAccepted)  // 퀘스트가 아이템 장착 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                                {
+                                    me.questItemEquip++;
+                                    quest.progressCount = me.questItemEquip;
+                                    break; // 퀘스트 처리 후 반복문 종료
+                                }
                             }
                             //itemlist.items[me.inventory[int.Parse(choice) - 1]].isEquipped = true;
                             if (selected.stat == "방어력")

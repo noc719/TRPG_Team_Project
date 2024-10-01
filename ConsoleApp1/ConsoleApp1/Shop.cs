@@ -9,6 +9,7 @@ namespace ConsoleApp1
 {
     internal class Shop
     {
+        private static List<Quest> battlequestlist = Program.questlist.quests;
         public static void EnterShop(Character me)//상점
         {
             int a = 0;
@@ -95,11 +96,19 @@ namespace ConsoleApp1
                         {
                             Console.WriteLine("이미 구매한 아이템입니다.");
                         }
-                        else if (selected.price <= me.gold)
+                        else if (selected.price <= me.gold)                        
                         {
-                            if (me.questItemBuy < 1)
+                            ////////////////////////////////////////////////////////////
+                            /// 아이템 장착시 퀫스트 진행도 증가
+                            /////////////////////////////////////////////////////////////
+                            foreach (var quest in battlequestlist)
                             {
-                                me.questItemBuy++;
+                                if (me.questItemBuy < 1 && quest.questTitle == "상점 구매하기" && quest.isQuestAccepted)  // 퀘스트가 상점 구매 퀘스트인지 확인하고, 해당 퀘스트가 수락된 상태일 때
+                                {
+                                    me.questItemBuy++;
+                                    quest.progressCount = me.questItemBuy;
+                                    break; // 퀘스트 처리 후 반복문 종료
+                                }
                             }
                             me.gold -= selected.price;
                             me.inventory.Add(selected);
