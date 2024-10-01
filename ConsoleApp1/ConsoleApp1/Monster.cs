@@ -66,7 +66,7 @@ namespace ConsoleApp1
 
 
             }
-            if (itemDrop ==1)
+            if (itemDrop <=5)
             {
                 //아이템 타입에 따른 
                 int itemType = random.Next(0, Program.itemlist.items.Length);

@@ -981,18 +981,18 @@ namespace ConsoleApp1
             {
                 if (item.isBought == true) //중복된 장비일 경우
                 {
-                    Console.WriteLine("중복 장비 휙득 - {0}G", item.price / 3);  //장비 원값의 3분의 1 가격을 얻음
+                    Console.WriteLine("중복 장비 획득 - {0}G", item.price / 3);  //장비 원값의 3분의 1 가격을 얻음
                     Battle.saveGold += item.price / 3;
                 }
                 else
                 {
                     item.isBought = true;
                     me.inventory.Add(item);
-                    Console.WriteLine("{0} - 1", item.name);
+                    Console.WriteLine("{0} - 1개", item.name);
                 }
             }
 
-            Console.WriteLine("{0}", Battle.saveGold);   //획득 골드 부분
+            Console.WriteLine("획득한 골드 - {0}G", Battle.saveGold);   //획득 골드 부분
             me.gold += Battle.saveGold;
 
             foreach (Potion dropedPotion in Battle.pickupPotion)
