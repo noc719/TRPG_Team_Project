@@ -17,16 +17,7 @@ namespace ConsoleApp1
         public int def { get; set; }
         public int atk { get; set; }
 
-
-
-        //Reward 메소드의 정보를 받아옴
-
-
-
-
-
-        //몬스터 정보
-        //몬스터 스폰을 랜덤하게
+   
         public Monster(int level, string name, int hp, int def, int atk)
         {
 
