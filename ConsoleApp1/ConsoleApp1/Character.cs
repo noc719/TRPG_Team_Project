@@ -51,18 +51,7 @@ namespace ConsoleApp1
             questItemBuy = 0;//상점에서 아이템 구매
             questItemEquip = 0;//인벤토리에서 장착아이템 장착
         }
-        public void ClearStage()
-        {
-            exp++;
-            if (level == exp)
-            {
-                level++;
-                exp = 0;
-                atk += 0.5f;
-                def += 1;
-            }
-        }
-
+       
         public void LevelSystem()
         {
             while (true)
